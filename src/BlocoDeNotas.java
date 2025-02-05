@@ -4,8 +4,8 @@ import java.util.Objects;
 public class BlocoDeNotas {
     private ArrayList<Anotacao> Notas;
 
-    public BlocoDeNotas(ArrayList<Anotacao> notas) {
-        this.Notas = notas;
+    public BlocoDeNotas() {
+        this.Notas = new ArrayList<Anotacao>();
 
     }
 
@@ -15,27 +15,24 @@ public class BlocoDeNotas {
         return novanota;
     }
 
-    public Anotacao buscarAnotacao (int id) {
-        for (int i = 0;i < Notas.size();i++){
-            Anotacao nota = Notas.get(i);
-            if (nota.getId() == id){
-                return nota;
-            }
-        }
-        return null;
-    }
-
     public Anotacao adicionarAnotacao (int id){
         Anotacao novanota = new Anotacao("-Sem texto-", id);
         Notas.add(novanota);
         return novanota;
     }
 
+    public Anotacao buscarAnotacao(int id) {
+        for (Anotacao nota : Notas) {
+            if (nota.getId() == id) {
+                return nota;
+            }
+        }
+        return null;
+    }
+
     public ArrayList<Anotacao> recuperarPorTexto (String texto) {
-        ArrayList<Anotacao> retorno = new ArrayList<>();
-        for (int i = 0; i < Notas.size(); i++){
-            Anotacao nota = Notas.get(i);
-            if (nota.getTexto().contains(texto)) {
+        ArrayList<Anotacao> retorno = new ArrayList<>();for (Anotacao nota : Notas) {
+            if (!nota.isDeletado() && nota.getTexto().contains(texto)) {
                 retorno.add(nota);
             }
         }

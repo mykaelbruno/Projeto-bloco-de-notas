@@ -18,6 +18,7 @@ public class Anotacao {
         if (!this.deletado){
             return this.texto.contains(texto);
         }
+        return false;
     }
 
     public int getId() {
@@ -28,7 +29,7 @@ public class Anotacao {
         if (!this.deletado){
             return texto;
         }
-        return null;
+        return "(Anotação deletada!)";
     }
 
     public void setTexto(String texto) {
@@ -38,10 +39,7 @@ public class Anotacao {
     }
 
     public LocalDate getData() {
-        if (!this.deletado){
-            return dataDeCriacao;
-        }
-        return null;
+        return dataDeCriacao;
     }
 
     //Métodos p/ deletar
@@ -51,7 +49,7 @@ public class Anotacao {
     }
 
     public void deleta() {
-        deletado = true;
+        this.deletado = true;
     }
 
 
