@@ -1,25 +1,24 @@
 diagrama de classes para organizar;
 > UML (Unified modeling language)
 
-============================================================================
->Anotacao
 - (usar ""-" antes de atributos ou métodos PRIVADOS)
 + (usar ""+" antes de atributos ou métodos PÚBLICOS)
-
+============================================================================
+>Anotacao
 -texto: string
 -id: int
 -dataDeCriacao: LocalDate
 -deletado: boolean
 
-+isDeletada(): boolean
-+deleta(): boolean
++isDeletada() :boolean
++deleta() :boolean
 
-+Anotacao(id:int; texto:String) [escreve o que o método vai receber]
-+contemTexto(texto:String) :boolean [indica que retona um boolean]
-+getId() :int
-+getTexto() :String
-+setTexto(texto:String)
-+getData() :LocalDate
+✅+Anotacao(id:int; texto:String) [escreve o que o método vai receber]
+✅+contemTexto(texto:String) :boolean [indica que retona um boolean]
+✅+getId() :int
+✅+getTexto() :String
+✅+setTexto(texto:String)
+✅+getData() :LocalDate
 +métodos obrgatórios de todas as classes
 
 ============================================================================
@@ -28,11 +27,11 @@ diagrama de classes para organizar;
 ------------
 Anotacoes: List<Anotacao>
 ------------
-+BlocoDeNotas()
-+adicionarAnotacao(texto:String) :Anotacao
-+buscarAnotacao(id:int) :Anotacao
-+adicionarAnotacao(id:int) :Anotacao
-+recuperarPorTexto(buscaStr:String) :List<Anotacao> [Retorna um arrayList com todas as ocorrencias da busca]
+✅+BlocoDeNotas()
+✅+adicionarAnotacao(texto:String) :Anotacao
+✅+buscarAnotacao(id:int) :Anotacao
+✅+adicionarAnotacao(id:int) :Anotacao
+✅+recuperarPorTexto(buscaStr:String) :List<Anotacao> [Retorna um arrayList com todas as ocorrencias da busca]
 +métodos obrgatórios de todas as classes
 
 ============================================================================
