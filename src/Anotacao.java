@@ -43,7 +43,6 @@ public class Anotacao {
     }
 
     //Métodos p/ deletar
-
     public boolean isDeletado() {
         return deletado;
     }
@@ -52,9 +51,7 @@ public class Anotacao {
         this.deletado = true;
     }
 
-
     //métodos obrigatórios
-
     @Override
     public String toString() {
         return "\n" + dataDeCriacao + " | ID: " + id + " >> " +texto;

@@ -21,6 +21,7 @@ public class BlocoDeNotas {
         return novanota;
     }
 
+
     public Anotacao buscarAnotacao(int id) {
         for (Anotacao nota : Notas) {
             if (nota.getId() == id) {
@@ -38,6 +39,33 @@ public class BlocoDeNotas {
         }
         return retorno;
     }
+
+    public void editarAnotacao(int id, String novoTexto) {
+        Anotacao nota = buscarAnotacao(id);
+        if (nota != null) {
+            nota.setTexto(novoTexto);
+        }
+    }
+
+    public String exibeBloco () {
+        ArrayList<Anotacao> ativas = new ArrayList<>();
+        for (Anotacao nota : Notas) {
+            if (!nota.isDeletado()) {
+                ativas.add(nota);
+            }
+        }
+        return "" + ativas;
+    }
+
+    public boolean deletarAnotacao(int id) {
+        Anotacao nota = buscarAnotacao(id);
+        if (nota != null) {
+            nota.deleta();
+            return true;
+        }
+        return false;
+    }
+
 
     @Override
     public String toString() {

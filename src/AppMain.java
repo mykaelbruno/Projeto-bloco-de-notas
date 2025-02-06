@@ -1,25 +1,19 @@
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 public class AppMain {
     public static void main(String[] args) {
-        ArrayList<Anotacao> notas = new ArrayList<Anotacao>();
+        BlocoDeNotas bloco1 = new BlocoDeNotas();
 
-        BlocoDeNotas Blc1 = new BlocoDeNotas();
+        bloco1.adicionarAnotacao("Prova de ADM amanhã (dia 06/02)");
+        bloco1.adicionarAnotacao("Show de guilherme dia 21/02");
+        bloco1.adicionarAnotacao("Meu aniversário dia 09/02");
+        bloco1.adicionarAnotacao(6);
 
-        Blc1.adicionarAnotacao("Consunta ao médico amanhã ás 21:00");
-        Blc1.adicionarAnotacao("Ida ao trabalho hj ah 17:00");
-        Blc1.adicionarAnotacao("ODEIO NESCAU");
-        Blc1.adicionarAnotacao("Prova quinta feira");
-
-        System.out.println(Blc1);
-
-        System.out.println("Segunda rodada de testes:  ");
-
-        System.out.println(Blc1.buscarAnotacao(3));
-        System.out.println(Blc1.recuperarPorTexto("ODEIO"));
-
-
+        System.out.println(bloco1.toString());
+        bloco1.deletarAnotacao(2);
+        System.out.println(bloco1.toString());
+        bloco1.buscarAnotacao(1);
+        System.out.println(bloco1.recuperarPorTexto("Meu"));
 
     }
 }
