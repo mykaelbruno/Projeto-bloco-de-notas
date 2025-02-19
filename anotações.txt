@@ -10,16 +10,16 @@ diagrama de classes para organizar;
 -dataDeCriacao: LocalDate
 -deletado: boolean
 
-+isDeletada() :boolean
-+deleta() :boolean
+✅+isDeletada() :boolean
+✅+deleta() :boolean
 
 ✅+Anotacao(id:int; texto:String) [escreve o que o método vai receber]
-✅+contemTexto(texto:String) :boolean [indica que retona um boolean]
 ✅+getId() :int
 ✅+getTexto() :String
-✅+setTexto(texto:String)
 ✅+getData() :LocalDate
-+métodos obrgatórios de todas as classes
+✅+contemTexto(texto:String) :boolean [indica que retona um boolean]
+✅+setTexto(texto:String)
+✅+métodos obrgatórios de todas as classes
 
 ============================================================================
 >BocoDeNotas
