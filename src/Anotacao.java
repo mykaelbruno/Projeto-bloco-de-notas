@@ -44,7 +44,7 @@ public class Anotacao {
 
     @Override
     public String toString() {
-        return "Nota" + data + " | " + id + " >> " + texto;
+        return "Anotação: " + data + " | " + id + " >> " + texto;
     }
 
     @Override
