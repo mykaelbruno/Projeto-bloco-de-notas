@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.concurrent.ExecutionException;
 
 public class Anotacao {
     private String texto;
@@ -7,11 +8,18 @@ public class Anotacao {
     private LocalDate data;
     private boolean deletado;
 
-    public Anotacao (String texto,int id) {
+    public Anotacao (String texto,int id) throws Exception {
+        verificaTexto(texto);
         this.texto = texto;
         this.id = id;
         data = LocalDate.now();
         deletado = false;
+    }
+
+    private static void verificaTexto(String texto) throws Exception {
+        if (texto == null || texto == "" || texto == " ") {
+            throw new Exception("o texto não pode ser vazio");
+        }
     }
 
     public String getTexto() {
@@ -34,11 +42,13 @@ public class Anotacao {
         deletado = true;
     }
 
-    public void setTexto(String texto) {
+    public void setTexto(String texto) throws Exception {
+        verificaTexto(texto);
         this.texto = texto;
     }
 
-    public boolean ContemTexto(String texto) {
+    public boolean ContemTexto(String texto) throws Exception {
+        verificaTexto(texto);
         return this.texto.contains(texto);
     }
 

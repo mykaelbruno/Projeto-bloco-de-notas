@@ -4,27 +4,46 @@ import java.util.Objects;
 public class BlocoDeNotas {
     ArrayList<Anotacao> Bloco = new ArrayList<Anotacao>();
 
-    public Anotacao adicionarAnotacao (String texto) {
+    public Anotacao adicionarAnotacao (String texto) throws Exception {
         Anotacao nota = new Anotacao(texto, Bloco.size()+1);
         Bloco.add(nota);
         return nota;
     }
 
-    public Anotacao buscarAnotacao(int id) {
+    public Anotacao buscarAnotacao(int id) throws Exception {
+        verificaID(id);
         for (Anotacao nota : Bloco){
             if (nota.getId() == id){
-                if (!nota.isDeletado()){
-                    return nota;
-                }
+                verificaDeletado(nota);
+                return nota;
             }
         }
         return null;
     }
 
-    public ArrayList<Anotacao> recuperarPorTexto(String buscaTexto) {
+    private static void verificaDeletado(Anotacao nota) throws Exception {
+        if (nota.isDeletado()){
+            throw new Exception("Anotação deletada.");
+        }
+    }
+
+    private void verificaID(int id) throws Exception {
+        if (id <= 0 || id >= Bloco.size()+1) {
+            throw new Exception("ID inválido..");
+        }
+    }
+
+    private static void verificaTexto(String buscaTexto) throws Exception {
+        if (buscaTexto == null || buscaTexto == "" || buscaTexto == " ") {
+            throw new Exception("O texto não pode ser vazio.");
+        }
+    }
+
+    public ArrayList<Anotacao> recuperarPorTexto(String buscaTexto) throws Exception {
+        verificaTexto(buscaTexto);
         ArrayList<Anotacao> encontradas = new ArrayList<Anotacao>();
         for(Anotacao nota : Bloco) {
-            if (nota.getTexto().contains(buscaTexto)){
+            if (nota.ContemTexto(buscaTexto)){
                 if (!nota.isDeletado()){
                     encontradas.add(nota);
                 }
@@ -33,10 +52,12 @@ public class BlocoDeNotas {
         return encontradas;
     }
 
-    public boolean excluirAnotacao(int id) {
+    public boolean excluirAnotacao(int id) throws Exception {
+        verificaID(id);
         for (Anotacao nota : Bloco) {
             if (nota.getId() == id){
-                Anotacao remover = nota;
+                verificaDeletado(nota);
+                Anotacao notaRemovida = nota;
                 nota.deleta();
                 return true;
             }
@@ -44,14 +65,15 @@ public class BlocoDeNotas {
         return false;
     }
 
-    public Anotacao editarAnotacao(int id, String texto) {
+    public Anotacao editarAnotacao(int id, String texto) throws Exception {
+        verificaID(id);
+        verificaTexto(texto);
         Anotacao editada = null;
         for (Anotacao nota : Bloco) {
             if (nota.getId() == id){
-                if (!nota.isDeletado()) {
-                    nota.setTexto(texto);
-                    editada = nota;
-                }
+                verificaDeletado(nota);
+                editada = nota;
+                nota.setTexto(texto);
             }
         }
         return editada;
