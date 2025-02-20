@@ -28,9 +28,9 @@ diagrama de classes para organizar;
 Anotacoes: List<Anotacao>
 ------------
 X +BlocoDeNotas()
+X +adicionarAnotacao(id:int) :Anotacao
 ✅+adicionarAnotacao(texto:String) :Anotacao
 ✅+buscarAnotacao(id:int) :Anotacao
-X +adicionarAnotacao(id:int) :Anotacao
 ✅+recuperarPorTexto(buscaStr:String) :List<Anotacao> [Retorna um arrayList com todas as ocorrencias da busca]
 +métodos obrgatórios de todas as classes
 

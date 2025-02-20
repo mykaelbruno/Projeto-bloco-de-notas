@@ -1,4 +1,3 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -14,7 +13,9 @@ public class BlocoDeNotas {
     public Anotacao buscarAnotacao(int id) {
         for (Anotacao nota : Bloco){
             if (nota.getId() == id){
-                return nota;
+                if (!nota.isDeletado()){
+                    return nota;
+                }
             }
         }
         return null;
@@ -24,17 +25,41 @@ public class BlocoDeNotas {
         ArrayList<Anotacao> encontradas = new ArrayList<Anotacao>();
         for(Anotacao nota : Bloco) {
             if (nota.getTexto().contains(buscaTexto)){
-                encontradas.add(nota);
+                if (!nota.isDeletado()){
+                    encontradas.add(nota);
+                }
             }
         }
         return encontradas;
     }
 
+    public boolean excluirAnotacao(int id) {
+        for (Anotacao nota : Bloco) {
+            if (nota.getId() == id){
+                Anotacao remover = nota;
+                nota.deleta();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Anotacao editarAnotacao(int id, String texto) {
+        Anotacao editada = null;
+        for (Anotacao nota : Bloco) {
+            if (nota.getId() == id){
+                if (!nota.isDeletado()) {
+                    nota.setTexto(texto);
+                    editada = nota;
+                }
+            }
+        }
+        return editada;
+    }
+
     @Override
     public String toString() {
-        return "BlocoDeNotas{" +
-                "Bloco=" + Bloco +
-                '}';
+        return  "Bloco=" + Bloco + '}';
     }
 
     @Override
