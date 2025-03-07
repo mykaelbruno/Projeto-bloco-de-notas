@@ -1,6 +1,5 @@
 import java.time.LocalDate;
 import java.util.Objects;
-import java.util.concurrent.ExecutionException;
 
 public class Anotacao {
     private String texto;
